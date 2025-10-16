@@ -3,16 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo List - Ihza</title>
 
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
-    <headear></headear>
-    <main></main>
-    <footer></footer>
+    <headear>   
+        <h1>My Todo List</h1>
+    </headear>
+
+    <main>
+        <section class="input-section">
+            <input type="text" id="todo-input" placeholder="Add a new todo...">
+            <button id="add-button">Add</button>
+        </section>
+
+        <section class="filter-section">
+            <button id="filter-all" class="filter-button active">All</button>
+            <button id="filter-active" class="filter-button">Active</button>
+            <button id="filter-completed" class="filter-button">Completed</button>
+        </section>
+
+        <section date>
+
+        <section class="todo-list-section">
+            <ul id="todo-list">
+                <!-- Todo items will be dynamically added here -->
+            </ul>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ihza's Todo App</p>
+    </footer>
 
 
 
