@@ -1,0 +1,17 @@
+body {
+    justify-items: center;
+    height: 100vh;
+    align-content: center;
+    background-color: green
+
+}
+
+input::placeholder {
+    font-family: 'Poppins';
+    color: #a4a3a3;
+}
+
+th, td {
+    padding: 12px 38px;
+    text-align: left;
+}

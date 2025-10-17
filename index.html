@@ -1,50 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo List - Ihza</title>
+    <title>Todo App</title>
 
-
+    <!-- File Eksternal CSS -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- File Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <headear>   
-        <h1>My Todo List</h1>
-    </headear>
+    <!-- Sebatasa Tittle -->
+    <div class="w-full">
+        <div class="mx-110 h-[2px] bg-white z-10 my-4"></div>
+        <h1 class="text-white text-4xl font-bold text-center mt-8 mb-1" style="font-family: 'Poppins', sans-serif;">
+            Write it Down!!</h1>
+        <h2 class="text-white text-4xl font-bold text-center mt-2 mb-8" style="font-family: 'Poppins', sans-serif;">
+            Get it Done!! </h2>
+        <div class="mx-110 h-[2px] bg-white z-10 my-4"></div>
+    </div>>
 
-    <main>
-        <section class="input-section">
-            <input type="text" id="todo-input" placeholder="Add a new todo...">
-            <button id="add-button">Add</button>
-        </section>
+    <!-- Container -->
+    <div class="bg-slate-100 p-7 rounded-[20px] border-10 border-green-400 rounded-[30px]">
 
-        <section class="filter-section">
-            <button id="filter-all" class="filter-button active">All</button>
-            <button id="filter-active" class="filter-button">Active</button>
-            <button id="filter-completed" class="filter-button">Completed</button>
-        </section>
+        <!-- Bagian Header -->
+        <header>
+            <h1 class="text-3xl font-bold text-green-600 text-center" style="font-family: 'Poppins', sans-serif;">Todo
+                List</h1>
+        </header>
 
-        <section date>
+        <!-- Bagian Utama -->
+        <main>
 
-        <section class="todo-list-section">
-            <ul id="todo-list">
-                <!-- Todo items will be dynamically added here -->
-            </ul>
-        </section>
+            <!-- Form Input dan Tombol -->
+            <div class="flex items-center gap-3 my-2">
+                <input id="todo-input" type="text" class="border rounded-[9px] p-2 flex-1"
+                    placeholder="Add a todo..." />
+                <input id="todo-date" type="date" class="border rounded-[9px] p-2" placeholder="dd/mm/yyyy" />
+                <button
+                    class="hover:bg-green-700 hover:shadow-md active:scale-95 transition-transform duration-150 border border-black bg-green-600 text-white h-11 w-11 rounded-full flex items-center justify-center text-xl"
+                    onclick="addTask();">
+                    +
+                </button>
+            </div>
 
+            <div class="h-[2px] bg-green-700 mt-8"></div>
 
-    </main>
+            <!-- Tombol Filter dan Delete -->
+            <div class="flex justify-between items-center my-6">
+                <button
+                    class="border border-black bg-green-900 text-white font-medium h-[41px] w-[75px] rounded-tl-[10px] rounded-bl-[10px] rounded-tr-none rounded-br-none flex items-center justify-center text-sm"
+                    style="font-family: 'Poppins', sans-serif;">
+                    Filter
+                </button>
 
+                <div class="relative w-full max-w-md mr-18">
+                    <input type="text" placeholder="Search your added task..." id="todo-search"
+                        class="w-full pl-3 pr-4 py-2 border rounded focus:outline-none border rounded-[9px] p-2 flex-1 rounded-tl-none rounded-bl-none rounded-tr-[10px] rounded-br-[10px]" />
+                    <button type="button" aria-label="Search" id="todo-search-button"
+                        class="hover:text-green-700 hover:bg-gray-100 hover:shadow-md hover:scale-110 transition-all duration-200 rounded-full p-1 absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                        🔍
+                    </button>
+                </div>
+
+                <button
+                    class="hover:bg-red-900 hover:shadow-md active:scale-95 transition-transform duration-150 bg-red-800 text-white font-medium h-[41px] w-[150px] rounded-[10px] flex items-center justify-center text-sm"
+                    style="font-family: 'Poppins', sans-serif;" onclick="deleteAllTasks();">
+                    Delete All
+                </button>
+            </div>
+
+            <!-- Tabel Output Todo List  -->
+            <div class="flex justify-center mt-5">
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table id="task-table" style="width: 100%; border-collapse: collapse;">
+                        <thead class="bg-green-600">
+                            <tr>
+                                <th class="text-white font-bold font-medium"
+                                    style="font-family: 'Poppins', sans-serif;">Task</th>
+                                <th class="text-white font-bold font-medium"
+                                    style="font-family: 'Poppins', sans-serif;">Due Date</th>
+                                <th class="text-white font-bold font-medium"
+                                    style="font-family: 'Poppins', sans-serif;">Status</th>
+                                <th class="text-white font-bold font-medium"
+                                    style="font-family: 'Poppins', sans-serif;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-table-body">
+                            <!-- Data akan dirender di sini -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Kaki -->
     <footer>
-        <p>&copy; 2025 Ihza's Todo App</p>
+        <p class="my-4">&copy; 2025 Ihza's Todo App</p>
     </footer>
 
-
-
+    <!-- File Eksternal JS -->
     <script src="js/script.js"></script>
+
 </body>
+
+<!-- Universal Modal -->
+<div id="custom-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-[300px] text-center">
+        <p id="modal-message" class="text-gray-800 mb-4 font-medium">...</p>
+        <div id="modal-buttons" class="flex justify-center gap-4">
+            <!-- Buttons will be injected here -->
+        </div>
+    </div>
+</div>
+
+
 
 </html>
