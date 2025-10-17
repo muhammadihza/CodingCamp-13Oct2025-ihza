@@ -111,6 +111,15 @@ function validateInput(task, date) {
         ]);
         return false;
     }
+    else if (task.trim().length < 5) {
+        showModal("Your task needs at least 5 characters! ^^", [
+            {
+                label: "OK",
+                class: "bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+            }
+        ]);
+        return false;
+    }
     else if (date.trim() === '') {
         showModal("Don't forget to set a due date! ^^", [
             {
